@@ -1,32 +1,26 @@
 const express = require("express");
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
+
+var app = express();
+
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Set Handlebars.
 const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-require("./config/connection");
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
-});
-
-// Serve index.handlebars to the root route, populated with all quote data.
-app.get("/", function(req, res) {
-
-});
-
+app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
