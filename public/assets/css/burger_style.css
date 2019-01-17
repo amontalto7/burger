@@ -1,3 +1,25 @@
 body {
-    background-color: #FFDD867;
+    background-color: #FFDD67;
+    font-family: 'Coiny', cursive;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+/* .logo {
+    margin: 0 auto;
+    width: 300px;
+} */
+
+.burgerimage {
+    height: 250px;
+ 
 }

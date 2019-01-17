@@ -43,9 +43,9 @@ function objToSql(ob) {
 var orm = {
   selectAll: function(tableInput, cb) {
     //   select * from burgers where devoured = ?;
-    var queryString = "SELECT * FROM " + tableInput;
+    var queryString = "SELECT * FROM " + tableInput +";";
 
-    queryString += " WHERE devoured = 0;";
+    // queryString += " WHERE devoured = 0;";
 
     // console.log(queryString);
 
