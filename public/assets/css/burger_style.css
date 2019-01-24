@@ -23,3 +23,8 @@ h1 {
     height: 250px;
  
 }
+
+.ready, .devoured {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff4d1;
+}
