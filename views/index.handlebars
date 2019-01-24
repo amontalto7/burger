@@ -7,7 +7,10 @@
                 {{#each burgers}}
                     {{#if devoured}}
                     {{else}}
-                        <tr><td>{{burger_name}}</td></tr>
+                        <tr><td>{{burger_name}}</td>
+                        <td>
+                            <button>Devour it!</button>
+                        </td></tr>
                     {{/if}}
                 {{/each}}
             </table>
