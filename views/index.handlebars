@@ -9,7 +9,7 @@
                     {{else}}
                         <tr><td>{{burger_name}}</td>
                         <td>
-                            <button>Devour it!</button>
+                            <button class="btnDevour" data-id="{{id}}">Devour it!</button>
                         </td></tr>
                     {{/if}}
                 {{/each}}
@@ -44,25 +44,47 @@
 </form>
 </div>
 
-	<script>
-		$(".create-burger").on("submit", function(event) {
-			// Make sure to preventDefault on a submit event.
-			event.preventDefault();
+<script>
+    // Make sure we wait to attach our handlers until the DOM is fully loaded.
+    $(function() {
+        $(".create-burger").on("submit", function(event) {
+            // Make sure to preventDefault on a submit event.
+            event.preventDefault();
 
-			let newBurger = {
-			name: $("#burgername").val().trim(),
-			};
+            let newBurger = {
+            name: $("#burgername").val().trim(),
+            };
 
-			// Send the POST request.
-			$.ajax("/api/burgers", {
-			type: "POST",
-			data: newBurger
-			}).then(
-			function() {
-				console.log("created new burger");
-				// Reload the page to get the updated list
-				location.reload();
-			}
-			);
-  		});
-	</script>
+            // Send the POST request.
+            $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+            }).then(
+            function() {
+                console.log("created new burger");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+            );
+        });
+
+
+        $(".btnDevour").on("click", function(event) {
+            let id = $(this).data("id");
+            console.log("test");
+            // Send the PUT request.
+            $.ajax("/api/burgers/" + id, {
+            type: "PUT"
+            }).then(
+                function() {
+                    console.log("burger devoured! ID: "+id);
+                    // Reload the page to get the updated list
+                    location.reload();
+                }
+            );
+        });
+    });
+    
+</script>
+
+    
