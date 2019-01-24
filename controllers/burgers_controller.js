@@ -27,11 +27,11 @@ router.get("/", function(req, res) {
 
   router.post("/api/burgers", function(req, res) {
     burger.insertOne([
-      "name", "sleepy"
+      "burger_name", "devoured"
     ], [
-      req.body.name, req.body.sleepy
+      req.body.name, 0
     ], function(result) {
-      // Send back the ID of the new quote
+      // Send back the ID of the new burger
       res.json({ id: result.insertId });
     });
   });
